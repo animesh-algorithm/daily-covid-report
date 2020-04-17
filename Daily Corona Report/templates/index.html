@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Latest compiled and minified CSS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+     <!-- jQuery library -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 
+     <!-- Popper JS -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ 
+     <!-- Latest compiled JavaScript -->
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="../static/style.css">
+     <title>Coronameter</title>
+</head>
+<body>
+    <div class="container text-center text-white">
+        <div class="header">
+            <h1>Coronameter<sub><img src="https://img.icons8.com/doodle/48/000000/india.png" style="width:40px"></sub></h1>
+    </sub></h1>
+        </div>
+
+        <br>
+
+        <div class="container">
+            <input type="text" placeholder="Enter Date...." class='input bg-light input-group form-control
+            ' id='date-input'>
+        </div>
+
+        <br>
+        <div id="daily-report">
+            {% for today in data %}
+                <div class="container">
+                    <div id="date" class='font-weight-bold text-left'>
+                        {{ today['date'] + "2020" }}
+                    </div>
+    
+                    <table class='table mt-3 text-white'>
+                        <thead>
+                            <th scope='col'>Total Confirmed</th>
+                            <th scope='col'>New Confirmed</th>
+                            <th scope='col'>Total Deaths</th>
+                            <th scope='col'>New Deaths</th>
+                            <th scope='col'>Total Recovered</th>
+                            <th scope='col'>New Recovered</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="lead">
+                                    {{ today['totalconfirmed'] }}
+                                </td>
+                                <td class="lead">
+                                    {{ today['dailyconfirmed'] }}
+                                </td>
+                                <td class="lead">
+                                    {{ today['totaldeceased'] }}
+                                </td>
+                                <td class="lead">
+                                    {{ today['dailydeceased'] }}
+                                </td>
+                                <td class="lead">
+                                    {{ today['totalrecovered'] }}
+                                </td>
+                                <td class="lead">
+                                    {{ today['dailyrecovered'] }}
+                                </td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                    <br>
+                </div>
+            {% endfor %}
+        </div> 
+    </div>
+
+    <script src="../static/main.js"></script>
+</body>
+</html>
